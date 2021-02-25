@@ -66,10 +66,10 @@ MonoBehaviour:
   pointDirection: {fileID: 0}
   targetMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 256
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!1 &8820083934730082238
 GameObject:
   m_ObjectHideFlags: 0

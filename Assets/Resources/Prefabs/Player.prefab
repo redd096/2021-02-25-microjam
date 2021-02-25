@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3748004794580145949}
   - component: {fileID: 3077749571393289105}
   - component: {fileID: 2170396746272403830}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 5015644015452160318}
   - component: {fileID: 1450233709793378128}
   - component: {fileID: 409035562473689303}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2487016365338020946}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
