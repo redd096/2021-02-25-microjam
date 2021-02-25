@@ -45,13 +45,15 @@
             {
                 for (int y = 0; y < gridsizeY; y++)
                 {
+                    Quaternion rotation;
+
                     //instantiate tile
-                    TileBase tile = Instantiate(GetTilePrefab(x, y), transform);
+                    TileBase tile = Instantiate(GetTilePrefab(x, y, out rotation), transform);
                     tile.transform.position = startPosition +                   //from start position
                         (useZ ?
                         new Vector3(x * tileSize.x, 0, y * tileSize.z) :        //if use Z, move on X and Z
                         new Vector3(x * tileSize.x, y * tileSize.y, 0));        //if use Y, move on X and Y
-                    tile.transform.rotation = Quaternion.identity;  //set rotation
+                    tile.transform.rotation = rotation;  //set rotation
 
                     //init tile and add to dictionary
                     Vector2Int positionInGrid = new Vector2Int(x, y);
@@ -84,6 +86,6 @@
         /// <summary>
         /// Get Tile Prefab
         /// </summary>
-        protected abstract TileBase GetTilePrefab(int x, int y);
+        protected abstract TileBase GetTilePrefab(int x, int y, out Quaternion rotation);
     }
 }

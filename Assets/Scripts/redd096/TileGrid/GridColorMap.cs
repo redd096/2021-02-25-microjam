@@ -42,18 +42,25 @@
         [Tooltip("When import texture, set Non-Power of 2 to None, and enable Read/Write")] [SerializeField] Texture2D gridImage = default;
         [SerializeField] TileColorMap[] tiles = default;
 
-        protected override TileBase GetTilePrefab(int x, int y)
+        protected override TileBase GetTilePrefab(int x, int y, out Quaternion rotation)
         {
             //get color in texture2D
             Color color = gridImage.GetPixel(x, y);
 
-            //foreach tile in list, find tile with this color
+            //foreach tile in list, find tile with this color (only R and G)
             foreach(TileColorMap tile in tiles)
             {
-                if (tile.tileColor == color)
+                if (tile.tileColor.r == color.r && tile.tileColor.g == color.g)
+                {
+                    //rotate using B
+                    float angle = color.b * 360;
+                    rotation = Quaternion.AngleAxis(angle, Vector3.up);
+
                     return tile;
+                }
             }
 
+            rotation = Quaternion.identity;
             return null;
         }
 
