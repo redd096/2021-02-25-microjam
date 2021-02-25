@@ -15,9 +15,9 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        //limit target frame and lock Mouse
+        //limit target frame and lock mouse
         Application.targetFrameRate = 60;
-        Utility.LockMouse(CursorLockMode.Locked);
+        SceneLoader.instance.ResumeGame();
 
         //get references
         rb = GetComponent<Rigidbody>();
@@ -32,6 +32,9 @@ public class Player : MonoBehaviour
         Movement(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         cameraControl.UpdateCameraPosition();
         cameraControl.UpdateRotation(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+
+        //check pause menu
+        PauseMenu(Input.GetKeyDown(KeyCode.Escape));
     }
 
     #region private API
@@ -50,6 +53,22 @@ public class Player : MonoBehaviour
         rb.velocity = direction * speed;
     }
 
+    void PauseMenu(bool inputPause)
+    {
+        if(inputPause)
+        {
+            //resume
+            if(Time.timeScale <= 0)
+            {
+                SceneLoader.instance.ResumeGame();
+            }
+            //or pause game
+            else
+            {
+                SceneLoader.instance.PauseGame();
+            }
+        }
+    }
 
     #endregion
 }

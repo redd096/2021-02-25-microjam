@@ -8,11 +8,13 @@
     {
         [Header("Menu")]
         [SerializeField] GameObject pauseMenu = default;
+        [SerializeField] GameObject endMenu = default;
 
         void Start()
         {
-            //by default, deactive pause menu
+            //by default, deactive menu
             PauseMenu(false);
+            EndMenu(false);
         }
 
         public void PauseMenu(bool active)
@@ -25,6 +27,24 @@
 
             //active or deactive pause menu
             pauseMenu.SetActive(active);
+        }
+
+        public void EndMenu(bool active)
+        {
+            if (endMenu == null)
+            {
+                Debug.LogWarning("There is no end menu");
+                return;
+            }
+
+            if (active)
+            {
+                //be sure pause menu is deactive
+                PauseMenu(false);
+            }
+
+            //active or deactive end menu
+            endMenu.SetActive(active);
         }
     }
 }

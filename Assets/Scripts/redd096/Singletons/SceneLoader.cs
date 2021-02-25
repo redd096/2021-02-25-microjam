@@ -19,7 +19,7 @@
 
             //enable player input and hide cursor
             //GameManager.instance.player.enabled = true;
-            //Utility.LockMouse(CursorLockMode.Locked);
+            Utility.LockMouse(CursorLockMode.Locked);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@
 
             //disable player input and show cursor
             //GameManager.instance.player.enabled = false;
-            //Utility.LockMouse(CursorLockMode.None);
+            Utility.LockMouse(CursorLockMode.None);
         }
 
         /// <summary>
