@@ -8,6 +8,7 @@ public class EnemyGraphics : MonoBehaviour
 {
     [Header("Field of View")]
     [SerializeField] LineRenderer linePrefab = default;
+    [SerializeField] LineRenderer killPlayerLinePrefab = default;
 
     FieldOfView3D fov;
 
@@ -53,5 +54,16 @@ public class EnemyGraphics : MonoBehaviour
         line.SetPosition(0, transform.position);
         line.SetPosition(1, rightFov);
         line.SetPosition(2, leftFov);
+    }
+
+    public void ShowLineToPlayer(Transform player)
+    {
+        //instantiate line
+        LineRenderer lineToPlayer = Instantiate(killPlayerLinePrefab);
+
+        //draw line from this to player
+        lineToPlayer.positionCount = 2;
+        lineToPlayer.SetPosition(0, transform.position);
+        lineToPlayer.SetPosition(1, player.position);
     }
 }

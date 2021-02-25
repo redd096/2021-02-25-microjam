@@ -10,11 +10,16 @@
         [SerializeField] GameObject pauseMenu = default;
         [SerializeField] GameObject endMenu = default;
 
+        [Header("End Menu Text")]
+        [SerializeField] Text endMenuText = default;
+        [SerializeField] string winMessage = "YOU WON!";
+        [SerializeField] string loseMessage = "YOU LOST...";
+
         void Start()
         {
             //by default, deactive menu
             PauseMenu(false);
-            EndMenu(false);
+            EndMenu(false, false);
         }
 
         public void PauseMenu(bool active)
@@ -29,7 +34,7 @@
             pauseMenu.SetActive(active);
         }
 
-        public void EndMenu(bool active)
+        public void EndMenu(bool active, bool win)
         {
             if (endMenu == null)
             {
@@ -41,6 +46,9 @@
             {
                 //be sure pause menu is deactive
                 PauseMenu(false);
+
+                //set text
+                endMenuText.text = win ? winMessage : loseMessage;
             }
 
             //active or deactive end menu
